@@ -58,6 +58,19 @@ func Test(t *testing.T) {
 ```
 As an example, see the [tests implemented for the lib itself](logger_test.go)
 
+### Adapting pre exiting usages of the built in log lib
+In order to avoid a painful refactoring the `github.com/matansh/levelog/log` package provides interface parity with the defacto interface exposed by the `log` lib.
+
+Existing code as such
+```go
+import "log"
+
+log.Print("foo")
+log.Fatalf("%s", "bar")
+log.Panicln("spam")
+```
+Can simply replace the import statement to `import "github.com/matansh/levelog/log"` without any breakage or further refactoring.
+
 ## Background
 While there are plenty of logging libraries in the golang sphere I failed to find one that simply wrapped the languages pre existing logging capabilities in a level based interface.
 
