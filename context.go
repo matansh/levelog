@@ -30,8 +30,8 @@ func FromContext(ctx context.Context) Logger {
 	// instead providing a reasonable default and printing a warn message
 	logger := NewLogger(
 		loglevel.Debug,
-		log.New(os.Stdout, "", 0),
-		log.New(os.Stderr, "", 0),
+		log.New(os.Stdout, "", log.LstdFlags),
+		log.New(os.Stderr, "", log.LstdFlags),
 	)
 	logger.Warn("the provided context did not contain a logger")
 
